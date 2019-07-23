@@ -24,3 +24,4 @@ Click the following link to view the demo. [Demo](https://antoniophd.github.io/m
 -   [ReactJs](https://github.com/reactjs/reactjs.org)
 -   [SheetJS js-xlsx](https://github.com/SheetJS/js-xlsx)
 -   [ChartJs](https://www.chartjs.org/)
+
