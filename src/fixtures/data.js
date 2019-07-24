@@ -1,5 +1,4 @@
-function Data() {
-  
+export function labelData() {
   return {
     labels: ['January', 'February', 'March'],
     datasets: [{
@@ -13,5 +12,3 @@ function Data() {
     }]
   };
 }
-
-export default Data;

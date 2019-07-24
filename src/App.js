@@ -1,9 +1,8 @@
 import React from 'react';
 import './App.css';
-import SheetJSApp from './sheetjs';
+import SheetJSApp from './services/sheetjs';
 import { Doughnut, Bar } from 'react-chartjs-2';
-import Data from './data';
-
+import {labelData} from './fixtures/data';
 
 function App() {
   return (
@@ -13,11 +12,11 @@ function App() {
         <SheetJSApp />
         </div>
         <div className="col-sm">
-        <Doughnut data={Data} options={{ maintainAspectRatio: false }}
+        <Doughnut data={labelData} options={{ maintainAspectRatio: false }}
             />
         </div>
         <div className="col-sm">
-        <Bar data={Data} options={{ maintainAspectRatio: false }}
+        <Bar data={labelData} options={{ maintainAspectRatio: false }}
             />
         </div>
       </div>
