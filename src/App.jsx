@@ -7,22 +7,13 @@ import { labelData, label2N } from "./fixtures/data";
 function App() {
     return (
         <div className="container">
+            <SheetJSApp />
             <div className="row">
-                <div className="col-sm-12">
-                    <SheetJSApp />
+                <div className="col-md-6">
+                    <Doughnut data={labelData} />
                 </div>
-                <div className="row" />
-                <div className="col-sm-6">
-                    <Doughnut
-                        data={labelData}
-                        options={{ maintainAspectRatio: false }}
-                    />
-                </div>
-                <div className="col-sm-6">
-                    <Radar
-                        data={label2N}
-                        options={{ maintainAspectRatio: false }}
-                    />
+                <div className="col-md-6">
+                    <Radar data={label2N} />
                 </div>
             </div>
         </div>
