@@ -20,7 +20,6 @@ class SheetJSApp extends React.Component {
             cols: [] /* Array of column objects e.g. { name: "C", K: 2 } */
         };
         this.handleFile = this.handleFile.bind(this);
-        this.exportFile = this.exportFile.bind(this);
     }
     handleFile(file /*:File*/) {
         /* Boilerplate to set up FileReader */
@@ -47,31 +46,12 @@ class SheetJSApp extends React.Component {
         if (rABS) reader.readAsBinaryString(file);
         else reader.readAsArrayBuffer(file);
     }
-    exportFile() {
-        /* convert state to workbook */
-        const ws = XLSX.utils.aoa_to_sheet(this.state.data);
-        const wb = XLSX.utils.book_new();
-        XLSX.utils.book_append_sheet(wb, ws, "SheetJS");
-        /* generate XLSX file and send to client */
-        XLSX.writeFile(wb, "sheetjs.xlsx");
-    }
     render() {
         return (
             <DragDropFile handleFile={this.handleFile}>
                 <div className="row">
                     <div className="col-xs-12">
                         <DataInput handleFile={this.handleFile} />
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-xs-12">
-                        <button
-                            disabled={!this.state.data.length}
-                            className="btn btn-success"
-                            onClick={this.exportFile}
-                        >
-                            Export
-                        </button>
                     </div>
                 </div>
                 <div className="row">
