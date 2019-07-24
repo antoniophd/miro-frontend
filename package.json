@@ -12,6 +12,7 @@
     "author": "Antonio Pierro",
     "license": "MIT",
     "dependencies": {
+        "bootstrap": "^4.3.1",
         "chart.js": "^2.8.0",
         "react": "^16.8.6",
         "react-chartjs-2": "^2.7.6",

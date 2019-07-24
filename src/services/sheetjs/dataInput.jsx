@@ -18,7 +18,6 @@ class DataInput extends React.Component {
         return (
             <form className="form-inline">
                 <div className="form-group">
-                    <label htmlFor="file">Spreadsheet</label>
                     <input
                         type="file"
                         className="form-control"
