@@ -11,7 +11,6 @@ import XLSX from "xlsx/xlsx";
 import OutTable from "./outTable";
 import DragDropFile from "./dragDropFile";
 import DataInput from "./dataInput";
-import { transpose } from "../../utils/transformer";
 
 class SheetJSApp extends React.Component {
     constructor(props) {
@@ -43,7 +42,7 @@ class SheetJSApp extends React.Component {
             });
             /* Update state */
             this.setState({ data: data, cols: make_cols(ws["!ref"]) });
-            console.log(transpose(this.state.data));
+            this.props.onLoadFile(this.state.data);
         };
         if (rABS) reader.readAsBinaryString(file);
         else reader.readAsArrayBuffer(file);
