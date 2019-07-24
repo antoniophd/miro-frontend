@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import SheetJSApp from './services/sheetjs';
+import SheetJSApp from './services/sheetjs/sheetJSApp';
 import { Doughnut, Bar } from 'react-chartjs-2';
 import {labelData} from './fixtures/data';
 
