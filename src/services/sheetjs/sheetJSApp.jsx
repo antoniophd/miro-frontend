@@ -79,6 +79,7 @@ const get_cols = ws => {
         const name = XLSX.utils.encode_col(i);
         o[i] = {
             name: name,
+            header: ws[name + "1"].w,
             key: i,
             type: ws[name + "2"].t
         };
