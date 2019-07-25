@@ -1,16 +1,24 @@
-export function config(data) {
-    // TODO it needs to distinguish between C, N, D
-    return {
-        labels: data[0].slice(1),
-        datasets: [
-            {
-                label: data[1][0],
-                data: data[1].slice(1)
-            },
-            {
-                label: data[2][0],
-                data: data[2].slice(1)
-            }
-        ]
+import { transpose } from "../../utils/transformer";
+
+export function config(cols, data) {
+    // TODO to refactor it
+    var config = {
+        datasets: []
     };
+    data = transpose(data);
+    let hasCat = cols.find(o => o.type === "s");
+    if (hasCat) {
+        config.labels = data.find(obj => obj[0] === hasCat.header).slice(1);
+    }
+    let hasNums = cols.filter(o => o.type === "n");
+    hasNums.forEach(hasNum => {
+        const sequences = data.filter(obj => obj[0] === hasNum.header);
+        sequences.forEach(sequence =>
+            config.datasets.push({
+                label: sequence[0],
+                data: sequence.slice(1)
+            })
+        );
+    });
+    return config;
 }

@@ -3,7 +3,6 @@ import "./App.css";
 import SheetJSApp from "./services/sheetjs/sheetJSApp";
 import { Doughnut, Bar, Line, Radar, Pie } from "react-chartjs-2";
 import { labelData, label2N } from "./fixtures/data";
-import { transpose } from "./utils/transformer";
 import { config } from "./services/plot/config";
 
 class App extends React.Component {
@@ -11,8 +10,8 @@ class App extends React.Component {
         data: [],
         cols: []
     };
-    handleLoadFile = data => {
-        this.setState({ data: data });
+    handleLoadFile = state => {
+        this.setState(state);
     };
 
     render() {
@@ -22,20 +21,24 @@ class App extends React.Component {
                     data={this.state.data}
                     onLoadFile={this.handleLoadFile}
                 />
-                <div className="row">
-                    <div className="col-md-6">
-                        <Doughnut data={labelData} />
-                    </div>
-                    <div className="col-md-6">{this.renderPlot()}</div>
-                </div>
+                {this.renderPlot()}
             </React.Fragment>
         );
     }
-
+    // TODO this logic needs to be another module in services/plot
     renderPlot() {
-        const { data } = this.state;
+        const { cols, data } = this.state;
         if (data.length > 0) {
-            return <Radar data={config(transpose(data))} />;
+            return (
+                <div className="row">
+                    <div className="col-md-6">
+                        <Doughnut data={config(cols, data)} />
+                    </div>
+                    <div className="col-md-6">
+                        <Radar data={config(cols, data)} />
+                    </div>
+                </div>
+            );
         }
     }
 }
