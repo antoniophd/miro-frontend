@@ -1,10 +1,30 @@
 import React from "react";
-import { Doughnut, Bar, Line, Radar, Pie } from "react-chartjs-2";
+import {
+    Bar,
+    Bubble,
+    Doughnut,
+    HorizontalBar,
+    Line,
+    Pie,
+    Polar,
+    Radar,
+    Scatter
+} from "react-chartjs-2";
 import { config } from "./configPlot";
 
 export function renderPlot(state) {
     const { cols, data } = state;
-    const plots = [Doughnut, Radar, Bar, Line, Pie];
+    const plots = [
+        Doughnut,
+        Pie,
+        Radar,
+        Bar,
+        HorizontalBar,
+        Line,
+        Polar,
+        Bubble,
+        Scatter
+    ];
     if (data.length > 0) {
         return plots.map((plot, i) =>
             React.createElement(
