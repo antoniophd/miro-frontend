@@ -1,8 +1,7 @@
 import React from "react";
 import "./App.css";
 import SheetJSApp from "./services/sheetjs/sheetJSApp";
-import { Doughnut, Bar, Line, Radar, Pie } from "react-chartjs-2";
-import { config } from "./services/plot/configPlot";
+import { renderPlot } from "./services/plot/renderPlot";
 
 class App extends React.Component {
     state = {
@@ -20,26 +19,9 @@ class App extends React.Component {
                     data={this.state.data}
                     onLoadFile={this.handleLoadFile}
                 />
-                <div className="row">{this.renderPlot()}</div>
+                <div className="row">{renderPlot(this.state)}</div>
             </React.Fragment>
         );
-    }
-    // TODO this logic needs to be another module in services/plot
-    renderPlot() {
-        const { cols, data } = this.state;
-        const plots = [Doughnut, Radar];
-        if (data.length > 0) {
-            return plots.map((plot, i) =>
-                React.createElement(
-                    "div",
-                    { className: "col-md-6" },
-                    React.createElement(plot, {
-                        key: i,
-                        data: config(cols, data)
-                    })
-                )
-            );
-        }
     }
 }
 
