@@ -41,8 +41,8 @@ class SheetJSApp extends React.Component {
                 raw: false
             });
             /* Update state */
-            this.setState({ data: data, cols: make_cols(ws["!ref"]) });
-            this.props.onLoadFile(this.state.data);
+            this.setState({ data: data, cols: make_cols(ws) });
+            this.props.onLoadFile(this.state);
         };
         if (rABS) reader.readAsBinaryString(file);
         else reader.readAsArrayBuffer(file);
@@ -72,10 +72,16 @@ class SheetJSApp extends React.Component {
 export default SheetJSApp;
 
 /* generate an array of column objects */
-const make_cols = refstr => {
+const make_cols = ws => {
     let o = [],
-        C = XLSX.utils.decode_range(refstr).e.c + 1;
-    for (var i = 0; i < C; ++i)
-        o[i] = { name: XLSX.utils.encode_col(i), key: i };
+        C = XLSX.utils.decode_range(ws["!ref"]).e.c + 1;
+    for (var i = 0; i < C; ++i) {
+        const name = XLSX.utils.encode_col(i);
+        o[i] = {
+            name: name,
+            key: i,
+            type: ws[name + "2"].t
+        };
+    }
     return o;
 };
