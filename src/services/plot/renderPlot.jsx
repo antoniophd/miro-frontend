@@ -1,29 +1,19 @@
 import React from "react";
-import {
-    Bar,
-    Bubble,
-    Doughnut,
-    HorizontalBar,
-    Line,
-    Pie,
-    Polar,
-    Radar,
-    Scatter
-} from "react-chartjs-2";
-import { config } from "./configPlot";
+import * as Plot from "react-chartjs-2";
+import { getConfig } from "./configPlot";
 
 export function renderPlot(state) {
     const { cols, data } = state;
     const plots = [
-        Doughnut,
-        Pie,
-        Radar,
-        Bar,
-        HorizontalBar,
-        Line,
-        Polar,
-        Bubble,
-        Scatter
+        Plot.Doughnut,
+        Plot.Pie,
+        Plot.Radar,
+        Plot.Bar,
+        Plot.HorizontalBar,
+        Plot.Line,
+        Plot.Polar,
+        Plot.Bubble,
+        Plot.Scatter
     ];
     if (data.length > 0) {
         return plots.map((plot, i) =>
@@ -32,7 +22,7 @@ export function renderPlot(state) {
                 { className: "col-md" },
                 React.createElement(plot, {
                     key: i,
-                    data: config(cols, data)
+                    data: getConfig(cols, data)
                 })
             )
         );

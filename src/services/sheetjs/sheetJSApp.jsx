@@ -71,7 +71,7 @@ class SheetJSApp extends React.Component {
 // if (typeof module !== "undefined") module.exports = SheetJSApp;
 export default SheetJSApp;
 
-/* generate an array of column objects */
+/* generate an array of all spreadsheet data */
 const get_cols = ws => {
     let o = [],
         C = XLSX.utils.decode_range(ws["!ref"]).e.c + 1;
@@ -79,9 +79,12 @@ const get_cols = ws => {
         const name = XLSX.utils.encode_col(i);
         o[i] = {
             name: name,
-            header: ws[name + "1"].w,
+            head: ws[name + "1"].w,
             key: i,
-            type: ws[name + "2"].t
+            type: ws[name + "2"].t,
+            data: Object.keys(ws)
+                .filter(cellName => cellName.match(name))
+                .map(cellName => ws[cellName].w)
         };
     }
     return o;
