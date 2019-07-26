@@ -12,7 +12,7 @@ import OutTable from "./outTable";
 import DragDropFile from "./dragDropFile";
 import DataInput from "./dataInput";
 
-class SheetJSApp extends React.Component {
+class Spreadsheet extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -69,7 +69,7 @@ class SheetJSApp extends React.Component {
 }
 
 // if (typeof module !== "undefined") module.exports = SheetJSApp;
-export default SheetJSApp;
+export default Spreadsheet;
 
 /* generate an array of all spreadsheet data */
 const get_cols = ws => {

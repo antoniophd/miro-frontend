@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
-import SheetJSApp from "./services/sheetjs/sheetJSApp";
-import { renderPlot } from "./services/plot/renderPlot";
+import SheetJSApp from "./services/spreadsheet";
+import { renderPlot } from "./services/plot";
 
 class App extends React.Component {
     state = {
