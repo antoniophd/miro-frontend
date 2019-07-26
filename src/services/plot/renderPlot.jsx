@@ -22,7 +22,7 @@ export function renderPlot(state) {
                 { className: "col-md" },
                 React.createElement(plot, {
                     key: i,
-                    data: getConfig(cols, data)
+                    data: getConfig(cols)
                 })
             )
         );
