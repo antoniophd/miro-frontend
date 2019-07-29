@@ -19,9 +19,7 @@ export function renderPlot(cols) {
 function getConfig(cols, plotName) {
     let config = {};
     let values;
-    // TODO based on plotName you should create a different config.
-    // use the Dispatch Tables: http://adripofjavascript.com/blog/drips/using-dispatch-tables-to-avoid-conditionals-in-javascript.html
-    console.log("--------", plotName);
+    // TODO based on plotName you should create a different config. Use the Dispatch Tables: http://adripofjavascript.com/blog/drips/using-dispatch-tables-to-avoid-conditionals-in-javascript.html or https://medium.com/edge-coders/coding-tip-try-to-code-without-if-statements-d06799eed231 .
 
     config.datasets = [];
     values = cols.filter(o => o.type === "s");
