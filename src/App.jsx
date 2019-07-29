@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
-import SheetJSApp from "./services/sheetjs/sheetJSApp";
-import { renderPlot } from "./services/plot/renderPlot";
+import SheetJSApp from "./services/spreadsheet";
+import { renderPlot } from "./services/plot";
 
 class App extends React.Component {
     state = {
@@ -19,7 +19,7 @@ class App extends React.Component {
                     data={this.state.data}
                     onLoadFile={this.handleLoadFile}
                 />
-                <div className="row">{renderPlot(this.state)}</div>
+                <div className="row">{renderPlot(this.state.cols)}</div>
             </React.Fragment>
         );
     }
