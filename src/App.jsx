@@ -19,7 +19,7 @@ class App extends React.Component {
                     data={this.state.data}
                     onLoadFile={this.handleLoadFile}
                 />
-                <div className="row">{renderPlot(this.state)}</div>
+                <div className="row">{renderPlot(this.state.cols)}</div>
             </React.Fragment>
         );
     }

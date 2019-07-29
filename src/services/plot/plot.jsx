@@ -3,22 +3,25 @@ import * as Plot from "react-chartjs-2";
 
 export function renderPlot(cols) {
     if (cols.length > 0) {
-        return getPlots().map((plot, i) =>
-            React.createElement(
+        return getPlots().map((plot, i) => {
+            return React.createElement(
                 "div",
-                { className: "col-md" },
+                { className: "col-md", key: i },
                 React.createElement(plot, {
                     key: i,
-                    data: getConfig(cols)
+                    data: getConfig(cols, plot.name)
                 })
-            )
-        );
+            );
+        });
     }
 }
 
-export function getConfig(cols) {
+function getConfig(cols, plotName) {
     let config = {};
     let values;
+    // TODO based on plotName you should create a different config.
+    // use the Dispatch Tables: http://adripofjavascript.com/blog/drips/using-dispatch-tables-to-avoid-conditionals-in-javascript.html
+    console.log("--------", plotName);
 
     config.datasets = [];
     values = cols.filter(o => o.type === "s");

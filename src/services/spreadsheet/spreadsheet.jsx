@@ -7,7 +7,7 @@
 */
 
 import React from "react";
-import XLSX from "xlsx/xlsx";
+import XLSX from "xlsx";
 import OutTable from "./outTable";
 import DragDropFile from "./dragDropFile";
 import DataInput from "./dataInput";
